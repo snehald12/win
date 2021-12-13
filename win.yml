@@ -1,0 +1,22 @@
+---
+- name: week5
+  hosts: all
+  tasks:
+   - name: Set timezone to 'GMT Standard Time' (GMT)
+     win_timezone:
+       timezone: GMT Standard Time
+   - name: Choose which Windows updates to install
+     win_updates:
+       category_names:
+         - SecurityUpdates
+         - CriticalUpdates
+         - UpdateRollups
+       reboot: yes
+
+
+   - name: Install git
+     win_chocolatey:
+       name:
+         - git
+         - notepadplusplus
+       state: present
