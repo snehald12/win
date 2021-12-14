@@ -1,0 +1,35 @@
+- hosts: all
+  tasks:
+  - name: Playbook
+    win_ping:
+    register: myconfig
+    
+  - debug:
+     var: myconfig
+  
+  - name: Copy a single file
+    win_copy:
+      src: hello.txt
+      dest: C:\Users\Administrator\Desktop\
+
+  - name: Find files in path
+    win_find:
+       paths: C:\Users\Administrator\Desktop\
+      
+  - name: Updating the content
+    win_lineinfile:
+       path: C:\Users\Administrator\Desktop\hello.txt
+       regex: 'hi'
+       line: 'Hello'
+
+  - name: Ensure user  is present
+    win_user:
+       name: Snehal
+       password: Redhat@123
+       state: present
+
+  - name: Create a new group
+    win_group:
+       name: User
+       description: 'Users Group'
+       state: present     
