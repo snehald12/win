@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: Playbook
+    win_ping:
+    register: myconfig
+    
+  - debug:
+     var: myconfig
